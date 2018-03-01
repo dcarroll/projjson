@@ -342,7 +342,7 @@
                         }
                     },
                     "dependencies": {
-                        "pid": {
+                        "id": {
                             "required": [
                                 "versionName",
                                 "versionDescription",
@@ -351,7 +351,7 @@
                         },
                         "versionName": {
                             "required": [
-                                "pid",
+                                "id",
                                 "versionDescription",
                                 "versionNumber"
                             ]
@@ -360,13 +360,13 @@
                             "required": [
                                 "versionName",
                                 "versionDescription",
-                                "pid"
+                                "id"
                             ]
                         },
                         "versionDescription": {
                             "required": [
                                 "versionName",
-                                "pid",
+                                "id",
                                 "versionNumber"
                             ]
                         }
