@@ -1,0 +1,407 @@
+{
+    "type": "object",
+    "title": "Project Definition Object",
+    "additionalProperties": false,
+    "properties": {
+        "namespace": {
+            "type": "string",
+            "title": "Namespace",
+            "description": "The project's namespace"
+        },
+        "sfdcLoginUrl": {
+            "type": "string",
+            "title": "SFDC Login URL",
+            "description": "The Salesforce Login URL",
+            "default": "https://login.salesforce.com"
+        },
+        "sourceApiVersion": {
+            "type": "string",
+            "title": "Source API Version",
+            "description": "The API version of the Salesforce DX-formatted source",
+            "default": "42.0"
+        },
+        "packageDirectories": {
+            "type": "array",
+            "title": "You can specify mutiple package directories and configurations",
+            "items": {
+                "$ref": "#/definitions/packageDirectory"
+            }
+        },
+        "softExit": {
+            "type": "boolean",
+            "title": "Soft Exit",
+            "description": "Enable or disable soft exit mode"
+        },
+        "enableTokenEncryption": {
+            "type": "boolean",
+            "title": "Enable Token Encryption",
+            "description": "Enable or disable token encryption"
+        }
+    },
+    "required": [
+        "packageDirectories",
+        "sfdcLoginUrl",
+        "sourceApiVersion"
+    ],
+    "definitions": {
+        "features": {
+            "type": "array",
+            "title": "Org Features",
+            "items": {
+                "type": "string",
+                "enum": [
+                    "API",
+                    "AuthorApex",
+                    "Communities",
+                    "ContractApprovals",
+                    "CustomerSelfService",
+                    "CustomApps",
+                    "CustomTabs",
+                    "DebugApex",
+                    "DefaultWorkflowUser",
+                    "ForceComPlatform",
+                    "MultiCurrency",
+                    "PersonAccounts",
+                    "SalesWave",
+                    "LightningSalesConsole",
+                    "LightningServiceConsole",
+                    "ServiceCloud",
+                    "ServiceWave",
+                    "SiteDotCom",
+                    "Sites"
+                ]
+            },
+            "description": "The features that you can provision for your org."
+        },
+        "orgPreferences": {
+            "title": "Org Preferences",
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "array",
+                    "title": "Enabled Preferences",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "AnalyticsSharingEnable",
+                            "AsyncSaveEnabled",
+                            "ChatterEnabled",
+                            "DisableParallelApexTesting",
+                            "EnhancedEmailEnabled",
+                            "EventLogWaveIntegEnabled",
+                            "LoginForensicsEnabled",
+                            "NetworksEnabled",
+                            "OfflineDraftsEnabled",
+                            "PathAssistantsEnabled",
+                            "S1DesktopEnabled",
+                            "S1EncryptedStoragePref2",
+                            "S1OfflinePref",
+                            "SelfSetPasswordInApi",
+                            "SendThroughGmailPref",
+                            "SocialProfilesEnable",
+                            "Translation",
+                            "VoiceEnabled",
+                            "IsAccountTeamsEnabled",
+                            "ShowViewHierarchyLink",
+                            "IsActivityRemindersEnabled",
+                            "IsDragAndDropSchedulingEnabled",
+                            "IsEmailTrackingEnabled",
+                            "IsGroupTasksEnabled",
+                            "IsMultidayEventsEnabled",
+                            "IsRecurringEventsEnabled",
+                            "IsRecurringTasksEnabled",
+                            "IsSidebarCalendarShortcutEnabled",
+                            "IsSimpleTaskCreateUIEnabled",
+                            "ShowEventDetailsMultiUserCalendar",
+                            "ShowHomePageHoverLinksForEvents",
+                            "ShowMyTasksHoverLinks",
+                            "AutoCalculateEndDate",
+                            "IsContractHistoryTrackingEnabled",
+                            "NotifyOwnersOnContractExpiration",
+                            "AssetLookupLimitedToActiveEntitlementsOnAccount",
+                            "AssetLookupLimitedToActiveEntitlementsOnContact",
+                            "AssetLookupLimitedToSameAccount",
+                            "AssetLookupLimitedToSameContact",
+                            "IsEntitlementsEnabled",
+                            "EntitlementLookupLimitedToActiveStatus",
+                            "EntitlementLookupLimitedToSameAccount",
+                            "EntitlementLookupLimitedToSameAsset",
+                            "EntitlementLookupLimitedToSameContact",
+                            "IsForecastsEnabled",
+                            "IsChatterProfileEnabled",
+                            "IsIdeaThemesEnabled",
+                            "IsIdeasEnabled",
+                            "IsIdeasReputationEnabled",
+                            "IsCreateEditOnArticlesTabEnabled",
+                            "IsExternalMediaContentEnabled",
+                            "IsKnowledgeEnabled",
+                            "ShowArticleSummariesCustomerPortal",
+                            "ShowArticleSummariesInternalApp",
+                            "ShowArticleSummariesPartnerPortal",
+                            "ShowValidationStatusField",
+                            "IsLiveAgentEnabled",
+                            "IsMarketingActionEnabled",
+                            "IsMiddleNameEnabled",
+                            "IsNameSuffixEnabled",
+                            "IsOpportunityTeamEnabled",
+                            "IsNegativeQuantityEnabled",
+                            "IsOrdersEnabled",
+                            "IsReductionOrdersEnabled",
+                            "IsExactTargetForSalesforceAppsEnabled",
+                            "IsCascadeActivateToRelatedPricesEnabled",
+                            "IsQuantityScheduleEnabled",
+                            "IsRevenueScheduleEnabled",
+                            "IsQuoteEnabled",
+                            "DocumentContentSearchEnabled",
+                            "OptimizeSearchForCjkEnabled",
+                            "RecentlyViewedUsersForBlankLookupEnabled",
+                            "SidebarAutoCompleteEnabled",
+                            "SidebarDropDownListEnabled",
+                            "SidebarLimitToItemsIownCheckboxEnabled",
+                            "SingleSearchResultShortcutEnabled",
+                            "SpellCorrectKnowledgeSearchEnabled"
+                        ]
+                    },
+                    "description": "The preferences that will be enabled."
+                },
+                "disabled": {
+                    "type": "array",
+                    "title": "Disabled Preferences",
+                    "items": {
+                        "type": "string",
+                        "enum": [
+                            "AnalyticsSharingEnable",
+                            "AsyncSaveEnabled",
+                            "ChatterEnabled",
+                            "DisableParallelApexTesting",
+                            "EnhancedEmailEnabled",
+                            "EventLogWaveIntegEnabled",
+                            "LoginForensicsEnabled",
+                            "NetworksEnabled",
+                            "OfflineDraftsEnabled",
+                            "PathAssistantsEnabled",
+                            "S1DesktopEnabled",
+                            "S1EncryptedStoragePref2",
+                            "S1OfflinePref",
+                            "SelfSetPasswordInApi",
+                            "SendThroughGmailPref",
+                            "SocialProfilesEnable",
+                            "Translation",
+                            "VoiceEnabled",
+                            "IsAccountTeamsEnabled",
+                            "ShowViewHierarchyLink",
+                            "IsActivityRemindersEnabled",
+                            "IsDragAndDropSchedulingEnabled",
+                            "IsEmailTrackingEnabled",
+                            "IsGroupTasksEnabled",
+                            "IsMultidayEventsEnabled",
+                            "IsRecurringEventsEnabled",
+                            "IsRecurringTasksEnabled",
+                            "IsSidebarCalendarShortcutEnabled",
+                            "IsSimpleTaskCreateUIEnabled",
+                            "ShowEventDetailsMultiUserCalendar",
+                            "ShowHomePageHoverLinksForEvents",
+                            "ShowMyTasksHoverLinks",
+                            "AutoCalculateEndDate",
+                            "IsContractHistoryTrackingEnabled",
+                            "NotifyOwnersOnContractExpiration",
+                            "AssetLookupLimitedToActiveEntitlementsOnAccount",
+                            "AssetLookupLimitedToActiveEntitlementsOnContact",
+                            "AssetLookupLimitedToSameAccount",
+                            "AssetLookupLimitedToSameContact",
+                            "IsEntitlementsEnabled",
+                            "EntitlementLookupLimitedToActiveStatus",
+                            "EntitlementLookupLimitedToSameAccount",
+                            "EntitlementLookupLimitedToSameAsset",
+                            "EntitlementLookupLimitedToSameContact",
+                            "IsForecastsEnabled",
+                            "IsChatterProfileEnabled",
+                            "IsIdeaThemesEnabled",
+                            "IsIdeasEnabled",
+                            "IsIdeasReputationEnabled",
+                            "IsCreateEditOnArticlesTabEnabled",
+                            "IsExternalMediaContentEnabled",
+                            "IsKnowledgeEnabled",
+                            "ShowArticleSummariesCustomerPortal",
+                            "ShowArticleSummariesInternalApp",
+                            "ShowArticleSummariesPartnerPortal",
+                            "ShowValidationStatusField",
+                            "IsLiveAgentEnabled",
+                            "IsMarketingActionEnabled",
+                            "IsMiddleNameEnabled",
+                            "IsNameSuffixEnabled",
+                            "IsOpportunityTeamEnabled",
+                            "IsNegativeQuantityEnabled",
+                            "IsOrdersEnabled",
+                            "IsReductionOrdersEnabled",
+                            "IsExactTargetForSalesforceAppsEnabled",
+                            "IsCascadeActivateToRelatedPricesEnabled",
+                            "IsQuantityScheduleEnabled",
+                            "IsRevenueScheduleEnabled",
+                            "IsQuoteEnabled",
+                            "DocumentContentSearchEnabled",
+                            "OptimizeSearchForCjkEnabled",
+                            "RecentlyViewedUsersForBlankLookupEnabled",
+                            "SidebarAutoCompleteEnabled",
+                            "SidebarDropDownListEnabled",
+                            "SidebarLimitToItemsIownCheckboxEnabled",
+                            "SingleSearchResultShortcutEnabled",
+                            "SpellCorrectKnowledgeSearchEnabled"
+                        ]
+                    },
+                    "description": "The preferences that will be disabled."
+                }
+            },
+            "description": "BLah dee dah"
+        },
+        "packageDependencies": {
+            "oneOf": [
+                {
+                    "additionalProperties": false,
+                    "type": "object",
+                    "properties": {
+                        "subscriberPackageVersionId": {
+                            "type": "string",
+                            "title": "Subscriber Package Version ID",
+                            "description": "The dependency subscriber package version ID (starts with 04t)"
+                        }
+                    }
+                },
+                {
+                    "type": "object",
+                    "properties": {
+                        "packageId": {
+                            "type": "string",
+                            "title": "Package ID",
+                            "description": "The dependency package2 ID (starts with 0Ho)"
+                        },
+                        "versionNumber": {
+                            "type": "string",
+                            "title": "Version Number",
+                            "description": "The dependency version number"
+                        }
+                    },
+                    "dependencies": {
+                        "packageId": {
+                            "required": [
+                                "versionNumber"
+                            ]
+                        },
+                        "versionNumber": {
+                            "required": [
+                                "packageId"
+                            ]
+                        }
+                    },
+                    "required": [
+                        "packageId",
+                        "versionNumber"
+                    ]
+                }
+            ]
+        },
+        "packageDirectory": {
+            "allOf": [
+                {
+                    "properties": {
+                        "orgPreferences": {
+                            "$ref": "#/definitions/orgPreferences"
+                        },
+                        "features": {
+                            "$ref": "#/definitions/features"
+                        },
+                        "id": {
+                            "type": "string",
+                            "title": "ID",
+                            "description": "ID of the package2 for the source directory (starts with 0Ho)"
+                        },
+                        "versionName": {
+                            "type": "string",
+                            "title": "Version Name",
+                            "description": "The package version name."
+                        },
+                        "versionDescription": {
+                            "type": "string",
+                            "title": "Version Description",
+                            "description": "The package version description"
+                        },
+                        "versionNumber": {
+                            "type": "string",
+                            "title": "Version Number",
+                            "description": "The package version number: Major.Minor.Patch.Build"
+                        },
+                        "ancestorId": {
+                            "type": "string",
+                            "title": "Ancestor ID",
+                            "description": "The package2 version ancestor ID (starts with 05i)"
+                        },
+                        "ancestorVersion": {
+                            "type": "string",
+                            "title": "Ancestor Version",
+                            "description": "The package2 ancestor version number."
+                        }
+                    },
+                    "dependencies": {
+                        "pid": {
+                            "required": [
+                                "versionName",
+                                "versionDescription",
+                                "versionNumber"
+                            ]
+                        },
+                        "versionName": {
+                            "required": [
+                                "pid",
+                                "versionDescription",
+                                "versionNumber"
+                            ]
+                        },
+                        "versionNumber": {
+                            "required": [
+                                "versionName",
+                                "versionDescription",
+                                "pid"
+                            ]
+                        },
+                        "versionDescription": {
+                            "required": [
+                                "versionName",
+                                "pid",
+                                "versionNumber"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "dependencies": {
+                            "type": "array",
+                            "title": "package dependencies",
+                            "items": {
+                                "$ref": "#/definitions/packageDependencies"
+                            }
+                        }
+                    }
+                },
+                {
+                    "properties": {
+                        "path": {
+                            "default": "force-app/main/default",
+                            "title": "path to where the source is stored in this project",
+                            "type": "string"
+                        },
+                        "default": {
+                            "default": false,
+                            "title": "true if this is the default path to use, false if not",
+                            "type": "boolean"
+                        }
+                    },
+                    "required": [
+                        "path",
+                        "default"
+                    ]
+                }
+            ]
+        }
+    }
+}

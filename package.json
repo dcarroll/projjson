@@ -1,0 +1,21 @@
+{
+    "name": "projjson",
+    "displayName": "projjson",
+    "description": "testing",
+    "version": "0.0.1",
+    "publisher": "dcarroll",
+    "engines": {
+        "vscode": "^1.19.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "contributes": {
+        "jsonValidation": [
+            {
+                "fileMatch": "**/sfdx-project.json",
+                "url": "./sfdx-project-def-schema.json"
+            }
+        ]
+    }
+}
