@@ -1,0 +1,11 @@
+{
+    "orgName": "ccoenraets Company",
+    "edition": "Developer",
+    "orgPreferences": {
+        "disabled": [],
+        "enabled": []
+    },
+    "features": [
+        "AuthorApex"
+    ]
+}

@@ -4,6 +4,9 @@
     "description": "testing",
     "version": "0.0.1",
     "publisher": "dcarroll",
+    "repository": {
+        "url": "https://github.com/dcarroll/projjson"
+    },
     "engines": {
         "vscode": "^1.19.0"
     },
@@ -15,6 +18,10 @@
             {
                 "fileMatch": "**/sfdx-project.json",
                 "url": "./sfdx-project-def-schema.json"
+            },
+            {
+                "fileMatch": "**/*scratch-def.json",
+                "url": "./sfdx-scratch-def-schema.json"
             }
         ]
     }

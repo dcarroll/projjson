@@ -1,0 +1,206 @@
+{
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "title": "ScratchDef Object",
+    "type": "object",
+    "description": "This object represents a scratch org defintion",
+    "additionalProperties": true,
+    "required": [
+        "edition"
+    ],
+    "properties": {
+        "orgName": {
+            "title": "Name of Scratch Org",
+            "type": "string",
+            "description": "The name to give the created scratch org."
+        },
+        "orgPreferences": {
+            "default": { "disabled":[], "enabled":[] },
+            "$ref": "#/definitions/orgPreferences"
+        },
+        "edition": {
+            "type": "string",
+            "title": "Edition of Scratch Org",
+            "description": "The scratch org can be developer or enterprise edition",
+            "default": "Developer",
+            "enum": [
+                "Developer",
+                "Enterprise"
+            ]
+        },
+        "hasSampleData": {
+            "type": "boolean",
+            "title": "Include Sample Data",
+            "description": "If true, sample data for standard objects will be added to the scratch org, if false it won't",
+            "default": false
+        },
+        "features": {
+            "$ref": "#/definitions/features"
+        },
+        "country": {
+            "title": "Country",
+            "type": "string",
+            "description": "Dev Hub's country. Scratch orgs are located in a data center based on the specified country.",
+            "maximum": 2
+        },
+        "username": {
+            "title": "Username",
+            "type": "string",
+            "description": "A user name formatted like test-unique_identifier@orgName.net."
+        },
+        "adminEmail": {
+            "title": "Administrator Email Address",
+            "type": "string",
+            "description": "Email address of the Dev Hub user making the scratch org creation request."
+        },
+        "description": {
+            "title": "Description of the Org",
+            "type": "string",
+            "description": "The description is a good way to document the scratch org’s purpose. You can view or edit the description in the Dev Hub. From App Launcher, select Scratch Org Info or Active Scratch Orgs, then click the scratch org number."
+        },
+        "language": {
+            "title": "Default Language",
+            "type": "string",
+            "description": "Default language for the country."
+        }
+    },
+    "definitions": {
+        "features": {
+            "type": "array",
+            "title": "Org Features",
+            "uniqueItems": true,
+            "default": [ "AuthorApex" ],
+            "items": {
+                "type": "string",
+                "enum": [
+                    "API",
+                    "AuthorApex",
+                    "Communities",
+                    "ContractApprovals",
+                    "CustomerSelfService",
+                    "CustomApps",
+                    "CustomTabs",
+                    "DebugApex",
+                    "DefaultWorkflowUser",
+                    "ForceComPlatform",
+                    "MultiCurrency",
+                    "PersonAccounts",
+                    "SalesWave",
+                    "LightningSalesConsole",
+                    "LightningServiceConsole",
+                    "ServiceCloud",
+                    "ServiceWave",
+                    "SiteDotCom",
+                    "Sites"
+                ]
+            },
+            "description": "The features that you can provision for your org."
+        },
+        "preferences": {
+            "type": "string",
+            "enum": [
+                "AnalyticsSharingEnable",
+                "AssetLookupLimitedToActiveEntitlementsOnAccount",
+                "AssetLookupLimitedToActiveEntitlementsOnContact",
+                "AssetLookupLimitedToSameAccount",
+                "AssetLookupLimitedToSameContact",
+                "AsyncSaveEnabled",
+                "AutoCalculateEndDate",
+                "ChatterEnabled",
+                "DisableParallelApexTesting",
+                "DocumentContentSearchEnabled",
+                "EnhancedEmailEnabled",
+                "EntitlementLookupLimitedToActiveStatus",
+                "EntitlementLookupLimitedToSameAccount",
+                "EntitlementLookupLimitedToSameAsset",
+                "EntitlementLookupLimitedToSameContact",
+                "EventLogWaveIntegEnabled",
+                "IsAccountTeamsEnabled",
+                "IsActivityRemindersEnabled",
+                "IsCascadeActivateToRelatedPricesEnabled",
+                "IsChatterProfileEnabled",
+                "IsContractHistoryTrackingEnabled",
+                "IsCreateEditOnArticlesTabEnabled",
+                "IsDragAndDropSchedulingEnabled",
+                "IsEmailTrackingEnabled",
+                "IsEntitlementsEnabled",
+                "IsExactTargetForSalesforceAppsEnabled",
+                "IsExternalMediaContentEnabled",
+                "IsForecastsEnabled",
+                "IsGroupTasksEnabled",
+                "IsIdeasEnabled",
+                "IsIdeasReputationEnabled",
+                "IsIdeaThemesEnabled",
+                "IsKnowledgeEnabled",
+                "IsLiveAgentEnabled",
+                "IsMarketingActionEnabled",
+                "IsMiddleNameEnabled",
+                "IsMultidayEventsEnabled",
+                "IsNameSuffixEnabled",
+                "IsNegativeQuantityEnabled",
+                "IsOpportunityTeamEnabled",
+                "IsOrdersEnabled",
+                "IsQuantityScheduleEnabled",
+                "IsQuoteEnabled",
+                "IsRecurringEventsEnabled",
+                "IsRecurringTasksEnabled",
+                "IsReductionOrdersEnabled",
+                "IsRevenueScheduleEnabled",
+                "IsSidebarCalendarShortcutEnabled",
+                "IsSimpleTaskCreateUIEnabled",
+                "LoginForensicsEnabled",
+                "NetworksEnabled",
+                "NotifyOwnersOnContractExpiration",
+                "OfflineDraftsEnabled",
+                "OptimizeSearchForCjkEnabled",
+                "PathAssistantsEnabled",
+                "RecentlyViewedUsersForBlankLookupEnabled",
+                "S1DesktopEnabled",
+                "S1EncryptedStoragePref2",
+                "S1OfflinePref",
+                "SelfSetPasswordInApi",
+                "SendThroughGmailPref",
+                "ShowArticleSummariesCustomerPortal",
+                "ShowArticleSummariesInternalApp",
+                "ShowArticleSummariesPartnerPortal",
+                "ShowEventDetailsMultiUserCalendar",
+                "ShowHomePageHoverLinksForEvents",
+                "ShowMyTasksHoverLinks",
+                "ShowValidationStatusField",
+                "ShowViewHierarchyLink",
+                "SidebarAutoCompleteEnabled",
+                "SidebarDropDownListEnabled",
+                "SidebarLimitToItemsIownCheckboxEnabled",
+                "SingleSearchResultShortcutEnabled",
+                "SocialProfilesEnable",
+                "SpellCorrectKnowledgeSearchEnabled",
+                "Translation",
+                "VoiceEnabled"
+            ]
+        },
+        "orgPreferences": {
+            "title": "Org Preferences",
+            "type": "object",
+            "properties": {
+                "enabled": {
+                    "type": "array",
+                    "title": "Enabled Preferences",
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/definitions/preferences"
+                    },
+                    "description": "The preferences that will be enabled."
+                },
+                "disabled": {
+                    "type": "array",
+                    "title": "Disabled Preferences",
+                    "uniqueItems": true,
+                    "items": {
+                        "$ref": "#/definitions/preferences"
+                    },
+                    "description": "The preferences that will be disabled."
+                }
+            },
+            "description": "BLah dee dah"
+        }
+    }
+}
